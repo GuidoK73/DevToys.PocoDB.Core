@@ -118,8 +118,16 @@ namespace DevToys.PocoDB.Core.Operations
             if (_Helper != null)
                 return;
 
-            _Helper = new DbCommandOperationHelper<TCOMMAND>(Config);
-            _Helper.Initialize();
+            Type _type = typeof(DbCommandOperationHelper<TCOMMAND>);
+            _Helper = (DbCommandOperationHelper<TCOMMAND>)CommandCache.Instance.Get(_type);
+
+            if (_Helper == null)
+            {
+                _Helper = new DbCommandOperationHelper<TCOMMAND>(Config);
+                _Helper.Initialize();
+
+                CommandCache.Instance.Register(_type, _Helper);
+            }
         }
     }
 
@@ -222,8 +230,16 @@ namespace DevToys.PocoDB.Core.Operations
             if (_Helper != null)
                 return;
 
-            _Helper = new DbCommandOperationHelper<TCOMMAND>(Config);
-            _Helper.Initialize();
+            Type _type = typeof(DbCommandOperationHelper<TCOMMAND>);
+            _Helper = (DbCommandOperationHelper<TCOMMAND>)CommandCache.Instance.Get(_type);
+
+            if (_Helper == null)
+            {
+                _Helper = new DbCommandOperationHelper<TCOMMAND>(Config);
+                _Helper.Initialize();
+
+                CommandCache.Instance.Register(_type, _Helper);
+            }
         }
     }
 }

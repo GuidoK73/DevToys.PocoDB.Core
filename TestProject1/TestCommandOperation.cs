@@ -31,6 +31,9 @@ namespace DevToys.PocoDB.Core.UnitTests
 
             var operation = new DbCommandOperation<Company, GetCompanyById>("Local");
             Company _result = operation.ExecuteSingleReader(new GetCompanyById() { Id = 1 });
+
+            var operation2 = new DbCommandOperation<Company, GetCompanyById>("Local");
+            Company _result2 = operation2.ExecuteSingleReader(new GetCompanyById() { Id = 1 });
         }
 
         [TestMethod]

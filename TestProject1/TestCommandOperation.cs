@@ -35,7 +35,7 @@ namespace DevToys.PocoDB.Core.UnitTests
             var operation2 = new DbCommandOperation<Company, GetCompanyById>("Local");
             Company _result2 = operation2.ExecuteSingleReader(new GetCompanyById() { Id = 1 });
 
-            
+
         }
 
         [TestMethod]
@@ -107,6 +107,25 @@ namespace DevToys.PocoDB.Core.UnitTests
             IEnumerable<Company> _result = operation.ExecuteReader(parameters);
 
             var _resultMaterialized = _result.ToList();
+        }
+
+
+        [TestMethod]
+        public void InsertNull()
+        {
+            var insert = new InsertCompanyBySqlStatement()
+            {
+                Name = "First Company",
+                Adress = "New Adres",
+                Country = "NL",
+                HouseNumber = "12",
+                CompanyType = CompanyType.BV,
+                Text = null,
+                ZipCode = "ABCD12"
+            };
+            var operationInsert = new DbCommandOperation<InsertCompanyBySqlStatement>("Local");
+            operationInsert.ExecuteNonQuery(insert);
+
         }
 
         [TestMethod]

@@ -50,7 +50,10 @@ namespace DevToys.PocoDB.Core.Attributes
         {
             object value = property.GetValue(commandObject);
             parameter.ParameterName = Name;
-            parameter.Value = value;
+            if (value == null)
+                parameter.Value = DBNull.Value;
+            else            
+                parameter.Value = value;
         }
     }
 }

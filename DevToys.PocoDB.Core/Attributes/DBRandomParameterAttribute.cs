@@ -162,6 +162,9 @@ namespace DevToys.PocoDB.Core.Attributes
                     break;
             }
 
+            if (_value == null)
+                _value = DBNull.Value;
+
             parameter.Value = _value;
         }
 

@@ -3,7 +3,7 @@ using DevToys.PocoDB.Core.Operations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PocoDBConsoleAppTest.Data;
 
-namespace DevToys.PocoDB.UnitTests
+namespace DevToys.PocoDB.Core.UnitTests
 {
     [TestClass]
     public class TestRandomData
@@ -13,7 +13,7 @@ namespace DevToys.PocoDB.UnitTests
             DataConfiguration.Instance.Add(
                 new ConnectionConfig()
                 {
-                    Name = "Local",
+                    Key = "Local",
                     ConnectionTypeName = "SqlClient",
                     ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
                 }

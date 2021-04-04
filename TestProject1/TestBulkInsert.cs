@@ -1,12 +1,11 @@
-﻿using DevToys.PocoDB.Core;
-using DevToys.PocoDB.Core.Config;
+﻿using DevToys.PocoDB.Core.Config;
 using DevToys.PocoDB.Core.Operations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PocoDBConsoleAppTest.Data;
 using System;
 using System.Collections.Generic;
 
-namespace DevToys.PocoDB.UnitTests
+namespace DevToys.PocoDB.Core.UnitTests
 {
     /// <summary>
     /// Wrapper arround System.Data.SqlClient.SqlBulkCopy
@@ -19,7 +18,7 @@ namespace DevToys.PocoDB.UnitTests
             DataConfiguration.Instance.Add(
                 new ConnectionConfig()
                 {
-                    Name = "Local",
+                    Key = "Local",
                     ConnectionTypeName = "SqlClient",
                     ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
                 }

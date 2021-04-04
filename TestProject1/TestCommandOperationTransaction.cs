@@ -5,7 +5,7 @@ using PocoDBConsoleAppTest.Data;
 using System;
 using System.Data.Common;
 
-namespace DevToys.PocoDB.UnitTests
+namespace DevToys.PocoDB.Core.UnitTests
 {
     [TestClass]
     public class TestCommandOperationTransaction
@@ -15,7 +15,7 @@ namespace DevToys.PocoDB.UnitTests
             DataConfiguration.Instance.Add(
                 new ConnectionConfig()
                 {
-                    Name = "Local",
+                    Key = "Local",
                     ConnectionTypeName = "SqlClient",
                     ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
                 }

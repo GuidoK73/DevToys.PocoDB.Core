@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace DevToys.PocoDB.UnitTests
+namespace DevToys.PocoDB.Core.UnitTests
 {
     [TestClass]
     public class TestCommandOperationBinaryData
@@ -18,7 +18,7 @@ namespace DevToys.PocoDB.UnitTests
             DataConfiguration.Instance.Add(
                 new ConnectionConfig()
                 {
-                    Name = "Local",
+                    Key = "Local",
                     ConnectionTypeName = "SqlClient",
                     ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
                 }

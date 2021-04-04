@@ -24,8 +24,8 @@ namespace DevToys.PocoDB.Core.Operations
     {
         private string[] _ReaderColumns = null;
 
-        /// <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
-        public DynamicSqlOperation(string configConnectionName) : base(configConnectionName) { }
+        /// <param name="configConnectionKey">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        public DynamicSqlOperation(string configConnectionKey) : base(configConnectionKey) { }
 
         /// <param name="config">Use in memory created configuration instead of using App.Config declaration.</param>
         public DynamicSqlOperation(ConnectionConfig config) : base(config) { }

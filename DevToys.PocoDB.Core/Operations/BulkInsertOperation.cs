@@ -31,9 +31,9 @@ namespace DevToys.PocoDB.Core.Operations
         /// <summary>
         ///
         /// </summary>
-        /// <param name="configConnectionName">Reference to connection in DevToys.PocoDB config section</param>
+        /// <param name="configConnectionKey">Reference to connection in DevToys.PocoDB config section</param>
         /// <param name="batchsize"></param>
-        public BulkInsertOperation(string configConnectionName, int batchsize) : base(configConnectionName)
+        public BulkInsertOperation(string configConnectionKey, int batchsize) : base(configConnectionKey)
         {
             if (!Config.ConnectionTypeName.Equals(ConnectionTypeNameConstants.SqlClient))
                 throw new DataException("BulkInsertOperation only available for SqlClient ConnectionType");

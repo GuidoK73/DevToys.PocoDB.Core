@@ -1,9 +1,4 @@
-﻿using DevToys.PocoDB.Core;
-using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 
 namespace DevToys.PocoDB.Core.Config
 {
@@ -18,33 +13,32 @@ namespace DevToys.PocoDB.Core.Config
         }
 
         /// <summary>
-        /// Retuerns static global instance of DataConfiguration 
+        /// Retuerns static global instance of DataConfiguration
         /// </summary>
         public static DataConfiguration Instance => _Instance ?? (_Instance = new DataConfiguration());
 
-        public ConnectionConfig Get(string name)
-        {
-            if (!_Connections.ContainsKey(name.ToLower()))
-                throw new DataException(string.Format("Could not find Data Connection named: '{0}'", name));
-
-            return _Connections[name.ToLower()];
-        }
-
         public void Add(ConnectionConfig config)
         {
-            if (_Connections.ContainsKey(config.Name.ToLower()))
-                throw new DataException(string.Format("Could not add Data Connection named: '{0}'", config.Name));
+            if (_Connections.ContainsKey(config.Key.ToLower()))
+                throw new DataException(string.Format("Could not add Data Connection named: '{0}'", config.Key));
 
-            _Connections.Add(config.Name.ToLower(), config);
+            _Connections.Add(config.Key.ToLower(), config);
         }
 
-        public void Remove(string name)
+        public ConnectionConfig Get(string key)
         {
-            if (!_Connections.ContainsKey(name.ToLower()))
-                throw new DataException(string.Format("Could not find Data Connection named: '{0}'", name));
+            if (!_Connections.ContainsKey(key.ToLower()))
+                throw new DataException(string.Format("Could not find Data Connection named: '{0}'", key));
 
-            _Connections.Remove(name.ToLower());
+            return _Connections[key.ToLower()];
         }
 
+        public void Remove(string key)
+        {
+            if (!_Connections.ContainsKey(key.ToLower()))
+                throw new DataException(string.Format("Could not find Data Connection named: '{0}'", key));
+
+            _Connections.Remove(key.ToLower());
+        }
     }
 }

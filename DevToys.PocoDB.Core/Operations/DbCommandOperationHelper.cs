@@ -99,7 +99,7 @@ namespace DevToys.PocoDB.Core
 
             if (!string.IsNullOrEmpty(_commandAttribute.RequiredConnectionType))
                 if (!_Config.ConnectionTypeName.Equals(_commandAttribute.RequiredConnectionType))
-                    throw new DataException("Required connection type: {0}, not supplied for connectionname: {1} ", _commandAttribute.RequiredConnectionType, _Config.Name);
+                    throw new DataException("Required connection type: {0}, not supplied for connectionname: {1} ", _commandAttribute.RequiredConnectionType, _Config.Key);
 
             return _commandAttribute;
         }

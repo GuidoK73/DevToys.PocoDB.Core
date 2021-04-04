@@ -15,7 +15,7 @@ namespace DevToys.PocoDB.Core.Config
 
         public CultureInfo CultureInfo { get; set; } = CultureInfo.CurrentCulture;
 
-        public string Name { get; set; }
+        public string Key { get; set; }
 
         public bool StrictMapping { get; set; } = false;
     }

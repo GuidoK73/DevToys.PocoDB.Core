@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace DevToys.PocoDB.UnitTests
+namespace DevToys.PocoDB.Core.UnitTests
 {
     /// <summary>
     /// Use ConnectionFactory.Instance to add a Custom Connection Object.
@@ -26,7 +26,7 @@ namespace DevToys.PocoDB.UnitTests
             DataConfiguration.Instance.Add(
                 new ConnectionConfig()
                 {
-                    Name = "Local",
+                    Key = "Local",
                     ConnectionTypeName = "MyCustomClient",
                     ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
                 }

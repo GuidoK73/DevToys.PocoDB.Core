@@ -19,8 +19,8 @@ namespace DevToys.PocoDB.Core.Operations
     {
         private DbCommandOperationHelper<TCOMMAND> _Helper;
 
-        /// <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
-        public DbCommandOperation(string configConnectionName) : base(configConnectionName)
+        /// <param name="configConnectionKey">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        public DbCommandOperation(string configConnectionKey) : base(configConnectionKey)
         { }
 
         /// <param name="config">Use in memory created configuration instead of using App.Config declaration.</param>
@@ -136,7 +136,7 @@ namespace DevToys.PocoDB.Core.Operations
         private DbCommandOperationHelper<TCOMMAND> _Helper;
 
         /// <param name="connectionname">Reference to connection in DevToys.PocoDB config section</param>
-        public DbCommandOperation(string configConnectionName) : base(configConnectionName) { }
+        public DbCommandOperation(string configConnectionKey) : base(configConnectionKey) { }
 
         /// <param name="config"></param>
         public DbCommandOperation(ConnectionConfig config) : base(config) { }

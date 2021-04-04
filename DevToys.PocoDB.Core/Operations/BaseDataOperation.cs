@@ -37,9 +37,7 @@ namespace DevToys.PocoDB.Core.Operations
     public abstract class BaseDataOperation<TRESULTOBJECT> : BaseDataOperation
         where TRESULTOBJECT : class, new()
     {
-        private DBFieldAttribute[] _Attributes;
-        private bool _Initialized = false;
-        private PropertyInfo[] _Properties;
+        private BaseDataOperationHelper<TRESULTOBJECT> _Helper = null;
 
 
         /// <param name="configConnectionName">Reference to connection in DevToys.PocoDB config section</param>
@@ -64,56 +62,26 @@ namespace DevToys.PocoDB.Core.Operations
             var _result = new TRESULTOBJECT();
             // create a new base object so we can invoke base methods.
             for (int index = 0; index < reader.FieldCount; index++)
-                SetPropertyValue(_Properties[index], _result, reader.GetValue(index), reader.GetFieldType(index), _Attributes[index].ReaderDefaultValue, _Attributes[index].StrictMapping);
+                SetPropertyValue(_Helper.Properties[index], _result, reader.GetValue(index), reader.GetFieldType(index), _Helper.Attributes[index].ReaderDefaultValue, _Helper.Attributes[index].StrictMapping);
 
             return _result;
         }
 
         private void Init(IDataReader reader)
         {
-            if (_Initialized)
+            if (_Helper != null)
                 return;
 
-            // Get Reader Column names ordered by ordinal
-            string[] _readerFieldNames = DataUtils.GetReaderColumns(reader);
+            Type _type = typeof(BaseDataOperationHelper<TRESULTOBJECT>);
+            _Helper = (BaseDataOperationHelper<TRESULTOBJECT>)CommandCache.Instance.Get(_type);
 
-            // Create property and Attribute dictionaries
-            var _attributes = new Dictionary<string, DBFieldAttribute>();
-            var _properties = new Dictionary<string, PropertyInfo>();
-
-            foreach (PropertyInfo property in typeof(TRESULTOBJECT).GetProperties())
+            if (_Helper == null)
             {
-                DBFieldAttribute _attribute = property.GetCustomAttribute<DBFieldAttribute>(false);
-                if (_attribute != null)
-                {
-                    string _key = _attribute.Field.ToLower();
-                    _attributes.Add(_key, _attribute);
-                    _properties.Add(_key, property);
-                }
+                _Helper = new BaseDataOperationHelper<TRESULTOBJECT>();
+                _Helper.Initialize(reader);
+
+                CommandCache.Instance.Register(_type, _Helper);
             }
-
-            // Validate fieldsnames
-            foreach (string column in _readerFieldNames)
-            {
-                if (!_properties.ContainsKey(column))
-                {
-                    string message = string.Format("Column '{0}' does not exist in the result DataSet.", column);
-                    throw new DataException(message);
-                }
-            }
-
-            // Convert Property / Attribute Dictionaries to Ordinal Array.
-            _Attributes = new DBFieldAttribute[_readerFieldNames.Length];
-            _Properties = new PropertyInfo[_readerFieldNames.Length];
-
-            for (int index = 0; index < _readerFieldNames.Length; index++)
-            {
-                string _name = _readerFieldNames[index];
-                _Attributes[index] = _attributes[_name];
-                _Properties[index] = _properties[_name];
-            }
-
-            _Initialized = true;
         }
 
 

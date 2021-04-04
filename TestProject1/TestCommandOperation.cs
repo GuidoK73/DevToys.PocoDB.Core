@@ -34,6 +34,8 @@ namespace DevToys.PocoDB.Core.UnitTests
 
             var operation2 = new DbCommandOperation<Company, GetCompanyById>("Local");
             Company _result2 = operation2.ExecuteSingleReader(new GetCompanyById() { Id = 1 });
+
+            
         }
 
         [TestMethod]
@@ -91,6 +93,10 @@ namespace DevToys.PocoDB.Core.UnitTests
             var operation = new DbCommandOperation<Company, GetCompanyAll>("Local");
             IEnumerable<Company> _result = operation.ExecuteReader(new GetCompanyAll() { });
             var _resultMaterialized = _result.ToList();
+
+            var operation2 = new DbCommandOperation<Company, GetCompanyAll>("Local");
+            IEnumerable<Company> _result2 = operation2.ExecuteReader(new GetCompanyAll() { });
+            var _resultMaterialized2 = _result2.ToList();
         }
 
         [TestMethod]

@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevToys.PocoDB.Core</name>
+    </assembly>
+    <members>
+        <member name="M:DevToys.PocoDB.Core.Attributes.BaseDBParameterAttribute.#ctor(System.String)">
+            <param name="name">DbParameter Name</param>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.BaseDBParameterAttribute.Name">
+            <summary>
+            DB fieldname
+            </summary>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Attributes.DBBulkInsertAttribute">
+            <summary>
+            For bulk insert operations Table name and Schema name are case sensitive!.
+            </summary>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Attributes.DBCommandAttribute">
+            <summary>
+            Defines how TCOMMAND for DBCommandOperation is used.
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Attributes.DBCommandAttribute.#ctor(System.String)">
+            <param name="commandText">sql statement / procedurename / table name depending on commandtype</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Attributes.DBCommandAttribute.#ctor(System.String,System.Data.CommandType)">
+            <param name="commandText">sql statement / procedurename / table name depending on commandtype</param>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBCommandAttribute.RequiredConnectionType">
+            <summary>
+            A Specific ConnectionType in configuration is required for this Procedure, throws error when not matched. Leave empty to ignore.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:DevToys.PocoDB.Core.Attributes.DBCommandAttribute.CommandTimeout" -->
+        <member name="T:DevToys.PocoDB.Core.Attributes.DBFieldAttribute">
+            <summary>
+            Relates a property to a DB field.
+            </summary>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBFieldAttribute.StrictMapping">
+            <summary>
+            Determines how field is mapped.
+            </summary>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBFieldAttribute.ReaderDefaultValue">
+            <summary>
+            Determines default value when object is read from DB and the specific value property is DBNull. (it's not an object creation default!)
+            </summary>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Attributes.DBParameterAttribute">
+            <summary>
+            Translates to: System.Data.IDbDataParameter
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Attributes.DBParameterAttribute.GetParameterValue``1(``0,System.Reflection.PropertyInfo,System.Data.IDbDataParameter)">
+            <summary>
+            Occurs on Output parameters.
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Attributes.DBParameterAttribute.SetParameterValue``1(``0,System.Reflection.PropertyInfo,System.Data.IDbDataParameter)">
+            <summary>
+            Occurs on Input and Output parameters.
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.#ctor(System.String)">
+            <param name="name">DbParameter Name</param>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.Items">
+            <summary>
+            Items will be used for property when property type matches Items type.
+            </summary>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.DateMax">
+            <summary>
+            For all random DateTime
+            </summary>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.DateMin">
+            <summary>
+            For all random DateTime
+            </summary>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.Format">
+            <summary>
+            for RandomStringType.Format and RandomStringType.DateTime
+            </summary>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.Max">
+            <summary>
+            For all numerics and RandomStringType.Number, RandomStringType.Text, Password
+            </summary>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.Min">
+            <summary>
+            For all numerics and RandomStringType.Number
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:DevToys.PocoDB.Core.Attributes.DBStringArrayParameterAttribute" -->
+        <member name="M:DevToys.PocoDB.Core.Attributes.DBStringArrayParameterAttribute.#ctor(System.String)">
+            <param name="name">DbParameter Name</param>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Config.ConnectionConfig.ConnectionTypeName">
+            <summary>
+            Connection type name as registered in ConnectionFactory
+            </summary>
+        </member>
+        <member name="P:DevToys.PocoDB.Core.Config.DataConfiguration.Instance">
+            <summary>
+            Retuerns static global instance of DataConfiguration
+            </summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.StrictMapping.ByConfigSetting">
+            <summary>Fieldmapping determined by Config setting StrictMapping.</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.StrictMapping.True">
+            <summary>Field is mapped strict, if PropertyType does not match with SqlReader field type an error will occur.</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.StrictMapping.False">
+            <summary>Field will be mapped to the property if possible (if not an error will occur). </summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.FirstName">
+            <summary>Random Name out of 500 first names</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.LastName">
+            <summary>Random Name out of 500 Last names</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.FullName">
+            <summary>First name + Last name</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Word">
+            <summary>Random word out of 500 words</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Text">
+            <summary>A text of random words (number of words limited by Max property)</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.CompanyName">
+            <summary>Random Company name out of 500 company namrs</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Url">
+            <summary>Company name formatted as an URL</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Number">
+            <summary>Random Number between Min and Max</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Guid">
+            <summary>Random Guid</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Format">
+            <summary>@U = Uppercase char @L Lowercase char @N numeric char</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Password">
+            <summary></summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.DateTime">
+            <summary>Random Date between DateMin and DateMax</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.DateTimeFormatted">
+            <summary>Random Date between DateMin and DateMax, formatted with Format property</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Country">
+            <summary>Random Country name out of 500 names</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Street">
+            <summary>Random dutch street name out of 500</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Adress">
+            <summary>Country,  City, street, housenumber, ZipCode</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.ZipCode">
+            <summary>Random generated zipcode</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.ColorName">
+            <summary>Random Color name </summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.BSNNumber">
+            <summary>Random 11 proof BSN number.</summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Item">
+            <summary>Random item out of item array  </summary>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Factory.ConnectionFactory">
+            <summary>
+            Default Connections: SqlClient, OleDb, Odbc
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Factory.ConnectionFactory.AddType``1(System.String)">
+            <param name="connectionTypeName">Name to use as reference ConnectionType in configuration.</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation.#ctor(System.String)">
+            <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation.#ctor(System.Data.Common.DbConnectionStringBuilder,System.String)">
+            <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        </member>
+        <member name="E:DevToys.PocoDB.Core.Operations.BaseDataOperation.PreExecute">
+            <summary>Raised prior to command execution. Use it to set provider specific properties for command and connection if nececary. </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation.RaisePreExecute(System.Data.Common.DbConnection,System.Data.Common.DbCommand)">
+            <summary>Call before invoking command.Execute etc. </summary>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Operations.BaseDataOperation`1">
+            <typeparam name="TRESULTOBJECT">The Result Object Type either as single object.</typeparam>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation`1.#ctor(System.String)">
+            <param name="configConnectionName">Reference to connection in DevToys.PocoDB config section</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation`1.#ctor(DevToys.PocoDB.Core.Config.ConnectionConfig)">
+            <param name="config"></param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation`1.#ctor(System.Data.Common.DbConnectionStringBuilder,System.String)">
+            <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation`1.ReadDataRow(System.Data.IDataReader)">
+            <summary>Reads a datarow and converts it to TObject</summary>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Operations.BulkInsertOperation`1">
+             <summary>
+             SQLCLIENT CONNECTION ONLY
+            
+             Class for executing bulk insert operations. Wrapper arround System.Data.SqlClient.SqlBulkCopy.
+             </summary>
+             <typeparam name="TINSERTOBJECT">The input object</typeparam>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BulkInsertOperation`1.#ctor(System.String,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="configConnectionKey">Reference to connection in DevToys.PocoDB config section</param>
+             <param name="batchsize"></param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BulkInsertOperation`1.Insert(System.Int32)">
+            <summary>
+            Insert repetative Data. this is usefull when using the DBRandomParameter.
+            </summary>
+            <param name="repeat"></param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.BulkInsertOperation`1.Insert(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Bulk insert data
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Operations.DbCommandOperation`1">
+            <summary>
+            Class for executing NonQuery or Scalar sql statements. Parameters are parsed by DbCommandOperation decorated with DBCommandAttribute and DBParameterAttribute attributes.
+            
+            Note: Initialization occurs on each first call after object creation, in case of multiple execution declare on class level.
+            </summary>
+            <typeparam name="TCOMMAND">Object defining Procedure Call with or without parameters</typeparam>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`1.#ctor(System.String)">
+            <param name="configConnectionKey">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`1.#ctor(DevToys.PocoDB.Core.Config.ConnectionConfig)">
+            <param name="config">Use in memory created configuration instead of using App.Config declaration.</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`1.#ctor(System.Data.Common.DbConnectionStringBuilder,System.String)">
+            <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`1.ExecuteNonQuery">
+            <summary>
+            When CommandOperation does not have any parameters
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`1.ExecuteNonQuery(System.Data.Common.DbConnection,System.Data.Common.DbTransaction)">
+            <summary>
+            When CommandOperation does not have any parameters
+            </summary>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Operations.DbCommandOperation`2">
+            <summary>
+            Class for executing Reader or SingleReader procedures. Parameters are parsed by DbCommandOperation decorated with DBCommandAttribute and DBParameterAttribute attributes.
+            ResultValues are based on TObject decorated with DBTableAttribute and DBFieldAttribute attributes.
+            
+            Note: Initialization occurs on each first call after object creation, in case of multiple execution declare on class level.
+            </summary>
+            <typeparam name="TRESULTOBJECT">The Result Object Type either as enumarable or single object.</typeparam>
+            <typeparam name="TCOMMAND">Object defining Procedure Call with or without parameters</typeparam>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`2.#ctor(System.String)">
+            <param name="connectionname">Reference to connection in DevToys.PocoDB config section</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`2.#ctor(DevToys.PocoDB.Core.Config.ConnectionConfig)">
+            <param name="config"></param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`2.#ctor(System.Data.Common.DbConnectionStringBuilder,System.String)">
+            <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`2.ExecuteReader">
+            <summary>
+            For procedures without any parameters.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`2.ExecuteReader(`1)">
+            <summary>
+            Exexutes a procedure, parameters are specified by DbCommandOperation object marked with DBCommandAttribute and DBParameterAttributes
+            returns TObject, TObject must be marked with DBFieldAttributes and must match the procedure result.
+            </summary>
+            <param name="commandName">Reference to attribute's commandName.</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DbCommandOperation`2.ExecuteSingleReader(`1)">
+            <summary>
+            Exexutes a procedure, parameters are specified by DbCommandOperation object marked with DBCommandAttribute and DBParameterAttributes
+            returns TObject, TObject must be marked with DBFieldAttributes and must match the procedure result.
+            </summary>
+            <param name="commandObject"></param>
+        </member>
+        <member name="T:DevToys.PocoDB.Core.Operations.DynamicSqlOperation">
+             <summary>
+             Class for executing sql statements and mapping them to dynamic ExpandoObjects.
+             All property names will be cleaned from non letters.
+             underscores are kept, spaces changed to underscore!.
+            
+             Limitations:
+             -    Output Parameters cannot be retrieved from procedures.
+             </summary>
+             <typeparam name=""></typeparam>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DynamicSqlOperation.#ctor(System.String)">
+            <param name="configConnectionKey">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DynamicSqlOperation.#ctor(DevToys.PocoDB.Core.Config.ConnectionConfig)">
+            <param name="config">Use in memory created configuration instead of using App.Config declaration.</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DynamicSqlOperation.#ctor(System.Data.Common.DbConnectionStringBuilder,System.String)">
+            <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DynamicSqlOperation.ExecuteReader(System.String,System.Data.CommandType,System.Int32,System.Dynamic.ExpandoObject)">
+            <summary>
+            Reads the sql into a list of T objects
+            Mapping will be done by DBField attributes or by overriding the ReadDataRow method.
+            </summary>
+            <param name="commandText">script to execute</param>
+            <param name="parameters">dynamic parameters will be translated to DbParameter</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DynamicSqlOperation.Init(System.Data.IDataReader)">
+            <summary>
+            Initializes the instance.
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Operations.DynamicSqlOperation.ReadDataRow(System.Data.IDataReader)">
+            <summary>
+            Reads a datarow and converts it to TObject
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.RandomData.RandomHelper.RandomFormatString(System.String)">
+            <param name="format">@U = Uppercase @L = Lowercase @N = Number</param>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.DataUtils.CleanString(System.String)">
+            <summary>
+            Removes all non alpha except for '_', replaces space with '_'.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.DataUtils.GetMaxValue(System.Type)">
+            <summary>
+            Return Max Value for a Numeric / DateTime / TimeSpan
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.DataUtils.GetMinValue(System.Type)">
+            <summary>
+            Return Min Value for a Numeric / DateTime / TimeSpan
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.DataUtils.IsSimpleType(System.Type)">
+            <summary>
+            Determines whether a type is simple like string or int, etc.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

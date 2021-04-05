@@ -1,9 +1,7 @@
-﻿using DevToys.PocoDB.Core.Attributes;
+﻿using DevToys.PocoDB.Core.Config;
 using DevToys.PocoDB.Core.Enums;
 using DevToys.PocoDB.Core.Factory;
-using DevToys.PocoDB.Core.Config;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Reflection;
@@ -38,7 +36,6 @@ namespace DevToys.PocoDB.Core.Operations
         where TRESULTOBJECT : class, new()
     {
         private BaseDataOperationHelper<TRESULTOBJECT> _Helper = null;
-
 
         /// <param name="configConnectionName">Reference to connection in DevToys.PocoDB config section</param>
         protected BaseDataOperation(string configConnectionName) : base(configConnectionName) { }
@@ -84,7 +81,6 @@ namespace DevToys.PocoDB.Core.Operations
             }
         }
 
-
         private void SetPropertyValue(PropertyInfo propertyInfo, TRESULTOBJECT dataobject, object value, Type valueType, object defaultvalue, StrictMapping strictField)
         {
             if (value == DBNull.Value || value == null)
@@ -98,7 +94,7 @@ namespace DevToys.PocoDB.Core.Operations
                 propertyInfo.SetValue(dataobject, defaultvalue, null);
                 return;
             }
-           
+
             if (propertyInfo.PropertyType.IsEnum)
             {
                 propertyInfo.SetValue(dataobject, Enum.Parse(propertyInfo.PropertyType, System.Convert.ToString(value)), null);
@@ -109,7 +105,7 @@ namespace DevToys.PocoDB.Core.Operations
             {
                 if (propertyInfo.PropertyType == valueType)
                 {
-                    propertyInfo.SetMethod.Invoke(dataobject, new object[] { value });  
+                    propertyInfo.SetMethod.Invoke(dataobject, new object[] { value });
                     return;
                 }
 

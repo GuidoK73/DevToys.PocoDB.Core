@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevToys.PocoDB.Core", "DevToys.PocoDB.Core\DevToys.PocoDB.Core.csproj", "{FB119B4E-096B-419B-B41E-E3154FDA9961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{C6AC0E02-67B1-43DB-8EC2-181BBEF738DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{C6AC0E02-67B1-43DB-8EC2-181BBEF738DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

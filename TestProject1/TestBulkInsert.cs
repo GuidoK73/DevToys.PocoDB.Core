@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PocoDBConsoleAppTest.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace DevToys.PocoDB.Core.UnitTests
 {
@@ -23,6 +24,7 @@ namespace DevToys.PocoDB.Core.UnitTests
                     ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
                 }
             );
+
         }
 
         [TestMethod]

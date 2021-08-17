@@ -14,6 +14,9 @@ namespace DevToys.PocoDB.Core.Attributes
             Field = field;
         }
 
+        /// <summary>
+        /// DB Field to map to the property
+        /// </summary>
         public string Field { get; set; } = string.Empty;
 
         /// <summary>

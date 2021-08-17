@@ -2,6 +2,9 @@
 
 namespace DevToys.PocoDB.Core.Config
 {
+    /// <summary>
+    /// Singleton instance holding all ConnectionConfig settings.
+    /// </summary>
     public class DataConfiguration
     {
         private static DataConfiguration _Instance;
@@ -13,9 +16,10 @@ namespace DevToys.PocoDB.Core.Config
         }
 
         /// <summary>
-        /// Retuerns static global instance of DataConfiguration
+        /// Returns static global instance of DataConfiguration
         /// </summary>
         public static DataConfiguration Instance => _Instance ?? (_Instance = new DataConfiguration());
+
 
         public void Add(ConnectionConfig config)
         {
@@ -24,6 +28,7 @@ namespace DevToys.PocoDB.Core.Config
 
             _Connections.Add(config.Key.ToLower(), config);
         }
+
 
         public ConnectionConfig Get(string key)
         {

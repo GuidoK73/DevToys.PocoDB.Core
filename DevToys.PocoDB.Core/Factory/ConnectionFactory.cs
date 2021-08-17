@@ -6,7 +6,7 @@ using System.Data.Common;
 namespace DevToys.PocoDB.Core.Factory
 {
     /// <summary>
-    /// Default Connections: SqlClient, OleDb, Odbc
+    /// Default Connections: SqlClient
     /// </summary>
     public sealed class ConnectionFactory
     {
@@ -18,6 +18,12 @@ namespace DevToys.PocoDB.Core.Factory
 
         public static ConnectionFactory Instance => _Instance ?? (_Instance = new ConnectionFactory());
 
+        /// <summary>
+        /// Creates a DbConnection for connectionTypeName and sets the connectionString.
+        /// </summary>
+        /// <param name="connectionTypeName"></param>
+        /// <param name="connectionstring"></param>
+        /// <returns></returns>
         public DbConnection Create(string connectionTypeName, string connectionstring)
         {
             if (!connectionTypes.ContainsKey(connectionTypeName))
@@ -35,6 +41,10 @@ namespace DevToys.PocoDB.Core.Factory
             connectionTypes = _connectionFactoryInitializer.Init();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TCONNECTION">Type to add</typeparam>
         /// <param name="connectionTypeName">Name to use as reference ConnectionType in configuration.</param>
         public void AddType<TCONNECTION>(string connectionTypeName) where TCONNECTION : DbConnection
         {

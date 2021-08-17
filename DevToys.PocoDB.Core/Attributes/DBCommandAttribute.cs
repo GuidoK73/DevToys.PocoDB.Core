@@ -23,6 +23,9 @@ namespace DevToys.PocoDB.Core.Attributes
             CommandType = commandtype;
         }
 
+        /// <summary>
+        /// Gets or sets the Transact-SQL statement, table name or stored procedure to execute at the data source.
+        /// </summary>
         public string CommandText { get; private set; } = string.Empty;
 
         /// <summary>
@@ -31,10 +34,13 @@ namespace DevToys.PocoDB.Core.Attributes
         public string RequiredConnectionType { get; set; }
 
         /// <summary>
-        //     Gets or sets the wait time before terminating the attempt to execute a command and generating an error.
+        /// Gets or sets the wait time before terminating the attempt to execute a command and generating an error.
         /// </summary>
         public int CommandTimeout { get; set; } = 30;
 
+        /// <summary>
+        /// Gets or sets a value indicating how the System.Data.SqlClient.SqlCommand.CommandText property is to be interpreted.
+        /// </summary>
         public CommandType CommandType { get; private set; } = CommandType.Text;
 
         public override string ToString() => CommandText;

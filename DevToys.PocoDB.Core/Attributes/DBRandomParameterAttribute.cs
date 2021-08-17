@@ -9,6 +9,9 @@ namespace DevToys.PocoDB.Core.Attributes
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public sealed class DBRandomParameterAttribute : DBParameterAttribute
     {
+        /// <summary>
+        /// What percentage should be random at null.
+        /// </summary>
         public int PercentageNull = 0;
 
         /// <param name="name">DbParameter Name</param>
@@ -44,6 +47,9 @@ namespace DevToys.PocoDB.Core.Attributes
         /// </summary>
         public Int32 Min { get; set; } = Int32.MinValue;
 
+        /// <summary>
+        /// Determines the type of random data for string properties.
+        /// </summary>
         public RandomStringType RandomStringType { get; set; } = RandomStringType.Word;
 
 

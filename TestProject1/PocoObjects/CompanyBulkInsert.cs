@@ -57,6 +57,6 @@ namespace PocoDBConsoleAppTest.Data
         public CompanyType CompanyType { get; set; } = CompanyType.BV;
 
         [DBParameter("Text")]
-        public string Text { get; set; } = string.Empty; // Will drain performance.
+        public string Text { get; set; } = string.Empty;
     }
 }

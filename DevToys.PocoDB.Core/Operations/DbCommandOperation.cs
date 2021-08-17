@@ -174,7 +174,7 @@ namespace DevToys.PocoDB.Core.Operations
         /// Exexutes a procedure, parameters are specified by DbCommandOperation object marked with DBCommandAttribute and DBParameterAttributes
         /// returns TObject, TObject must be marked with DBFieldAttributes and must match the procedure result.
         /// </summary>
-        /// <param name="commandName">Reference to attribute's commandName.</param>
+        /// <param name="commandObject"></param>
         public IEnumerable<TRESULTOBJECT> ExecuteReader(TCOMMAND commandObject)
         {
             using (DbConnection connection = ConnectionFactory.Instance.Create(Config.ConnectionTypeName, Config.ConnectionString))

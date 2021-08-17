@@ -8,12 +8,25 @@ namespace DevToys.PocoDB.Core.Attributes
     /// Translates to: System.Data.IDbDataParameter
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
-    public class DBParameterAttribute : BaseDBParameterAttribute
+    public class DBParameterAttribute : Attribute
     {
-        public DBParameterAttribute(string Name) : base(Name)
+        /// <summary>
+        /// DB Parameter name to map to the property.
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        public DBParameterAttribute(string name) 
         {
+            Name = name;
         }
 
+        /// <summary>
+        /// Gets or sets a value that indicates whether the parameter is input-only, output-only, bidirectional, or a stored procedure return value parameter.
+        /// </summary>
         public ParameterDirection Direction { get; set; } = ParameterDirection.Input;
 
         /// <summary>

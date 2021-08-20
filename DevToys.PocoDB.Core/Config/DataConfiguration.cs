@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using DevToys.PocoDB.Core.Factory;
+using System.Collections.Generic;
+using System.Data.Common;
 
 namespace DevToys.PocoDB.Core.Config
 {
@@ -21,12 +23,16 @@ namespace DevToys.PocoDB.Core.Config
         public static DataConfiguration Instance => _Instance ?? (_Instance = new DataConfiguration());
 
 
-        public void Add(ConnectionConfig config)
+        public void Add<T>(ConnectionConfig config) where T: DbConnection
         {
             if (_Connections.ContainsKey(config.Key.ToLower()))
                 throw new DataException(string.Format("Could not add Data Connection named: '{0}'", config.Key));
 
             _Connections.Add(config.Key.ToLower(), config);
+
+            config.ConnectionTypeName = typeof(T).Name;
+            
+            ConnectionFactory.Instance.AddType<T>();
         }
 
 

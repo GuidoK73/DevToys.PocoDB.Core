@@ -21,13 +21,10 @@ namespace DevToys.PocoDB.Core.UnitTests
     {
         public TestCustomDataProvider()
         {
-            ConnectionFactory.Instance.AddType<SqlConnection>("MyCustomClient");
-
-            DataConfiguration.Instance.Add(
+            DataConfiguration.Instance.Add<SqlConnection>(
                 new ConnectionConfig()
                 {
                     Key = "Local",
-                    ConnectionTypeName = "MyCustomClient",
                     ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
                 }
             );

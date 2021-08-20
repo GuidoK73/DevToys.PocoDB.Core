@@ -1,5 +1,4 @@
 ﻿using DevToys.PocoDB.Core.Config;
-using DevToys.PocoDB.Core.Factory;
 using DevToys.PocoDB.Core.Operations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PocoDBConsoleAppTest.Data;
@@ -15,27 +14,8 @@ namespace DevToys.PocoDB.Core.UnitTests
     {
         public TestCommandOperation2()
         {
-
-            ConnectionFactory.Instance.AddType<OleDbConnection>("OleDb");
-
-            DataConfiguration.Instance.Add(
-                new ConnectionConfig()
-                {
-                    Key = "LocalOleDb",
-                    ConnectionTypeName = "OleDb",
-                    ConnectionString = @"Provider=MSOLEDBSQL;Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Integrated Security=SSPI;"
-                }
-            );
-            DataConfiguration.Instance.Add(
-                new ConnectionConfig()
-                {
-                    Key = "LocalOleDb2",
-                    ConnectionTypeName = "OleDb",
-                    ConnectionString = @"Provider=MSOLEDBSQL;Data Source=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Integrated Security=SSPI;"
-                }
-            );
-
-
+            DataConfiguration.Instance.Add<OleDbConnection>(new ConnectionConfig(){ Key = "LocalOleDb", ConnectionString = @"Provider=MSOLEDBSQL;Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Integrated Security=SSPI;" } );          
+            DataConfiguration.Instance.Add<OleDbConnection>(new ConnectionConfig(){ Key = "LocalOleDb2", ConnectionString = @"Provider=MSOLEDBSQL;Data Source=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Integrated Security=SSPI;" });
         }
 
         [TestMethod]

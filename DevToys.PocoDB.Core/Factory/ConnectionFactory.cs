@@ -8,13 +8,13 @@ namespace DevToys.PocoDB.Core.Factory
     /// <summary>
     /// Default Connections: SqlClient
     /// </summary>
-    public sealed class ConnectionFactory
+    internal sealed class ConnectionFactory
     {
         private static ConnectionFactory _Instance;
 
         private Dictionary<string, Type> connectionTypes = new Dictionary<string, Type>();
 
-        private ConnectionFactory() => Init();
+        private ConnectionFactory() { }
 
         public static ConnectionFactory Instance => _Instance ?? (_Instance = new ConnectionFactory());
 
@@ -32,26 +32,21 @@ namespace DevToys.PocoDB.Core.Factory
             return Activator.CreateInstance(connectionTypes[connectionTypeName], connectionstring) as DbConnection;
         }
 
-        private void Init()
-        {
-            if (connectionTypes.Count > 0)
-                return;
-
-            ConnectionFactoryInitializer _connectionFactoryInitializer = new ConnectionFactoryInitializer();
-            connectionTypes = _connectionFactoryInitializer.Init();
-        }
+        public Type GetType(string connectionTypeName) => !connectionTypes.ContainsKey(connectionTypeName) ? null : connectionTypes[connectionTypeName];
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TCONNECTION">Type to add</typeparam>
         /// <param name="connectionTypeName">Name to use as reference ConnectionType in configuration.</param>
-        public void AddType<TCONNECTION>(string connectionTypeName) where TCONNECTION : DbConnection
+        public void AddType<TCONNECTION>() where TCONNECTION : DbConnection
         {
-            if (connectionTypes.ContainsKey(connectionTypeName))
-                throw new DataException($"The ClientType '{connectionTypeName}' does already exist. Use another name for '{typeof(TCONNECTION).Name}'.");
+            string _name = typeof(TCONNECTION).Name;
 
-            connectionTypes.Add(connectionTypeName, typeof(TCONNECTION));
+            if (connectionTypes.ContainsKey(_name))
+                return;
+
+            connectionTypes.Add(_name, typeof(TCONNECTION));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DevToys.PocoDB.Core.Attributes;
 using System.Data;
 using System.Collections.Generic;
+using DevToys.PocoDB.Core.Enums;
 
 namespace PocoDBConsoleAppTest.Data
 {
@@ -117,25 +118,25 @@ namespace PocoDBConsoleAppTest.Data
         [DBParameter("OutputId", Direction = ParameterDirection.Output)]
         public int Id { get; set; }
 
-        [DBRandomParameter("name")]
+        [DBRandomParameter("name", RandomStringType = RandomStringType.FirstName )]
         public string Name { get; set; }
 
-        [DBRandomParameter("Adress")]
+        [DBRandomParameter("Adress", RandomStringType = RandomStringType.Adress )]
         public string Adress { get; set; }
 
-        [DBRandomParameter("Country")]
+        [DBRandomParameter("Country", RandomStringType = RandomStringType.Country )]
         public string Country { get; set; }
 
-        [DBRandomParameter("ZipCode")]
+        [DBRandomParameter("ZipCode", RandomStringType = RandomStringType.ZipCode )]
         public string ZipCode { get; set; }
 
-        [DBRandomParameter("HouseNumber")]
+        [DBRandomParameter("HouseNumber", RandomStringType = RandomStringType.Number)]
         public string HouseNumber { get; set; }
 
-        [DBParameter("CompanyType")]
+        [DBRandomParameter("CompanyType")]
         public CompanyType CompanyType { get; set; } = CompanyType.BV;
 
-        [DBRandomParameter("Text")]
+        [DBRandomParameter("Text", RandomStringType = RandomStringType.Text, Max = 20 )]
         public string Text { get; set; }
     }
 

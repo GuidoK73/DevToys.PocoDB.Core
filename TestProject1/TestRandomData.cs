@@ -2,6 +2,7 @@
 using DevToys.PocoDB.Core.Operations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PocoDBConsoleAppTest.Data;
+using System.Data.SqlClient;
 
 namespace DevToys.PocoDB.Core.UnitTests
 {
@@ -10,14 +11,7 @@ namespace DevToys.PocoDB.Core.UnitTests
     {
         public TestRandomData()
         {
-            DataConfiguration.Instance.Add(
-                new ConnectionConfig()
-                {
-                    Key = "Local",
-                    ConnectionTypeName = "SqlClient",
-                    ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
-                }
-            );
+            DataConfiguration.Instance.Add<SqlConnection>( new ConnectionConfig()  { Key = "Local", ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;" } );
         }
 
         [TestMethod]

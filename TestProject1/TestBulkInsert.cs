@@ -16,15 +16,7 @@ namespace DevToys.PocoDB.Core.UnitTests
     {
         public TestBulkInsert()
         {
-            DataConfiguration.Instance.Add(
-                new ConnectionConfig()
-                {
-                    Key = "Local",
-                    ConnectionTypeName = "SqlClient",
-                    ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"
-                }
-            );
-
+            DataConfiguration.Instance.Add<SqlConnection>( new ConnectionConfig() { Key = "Local", ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;" } );
         }
 
         [TestMethod]

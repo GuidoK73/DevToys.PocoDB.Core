@@ -13,7 +13,7 @@ namespace DevToys.PocoDB.Core.Config
         /// <summary>
         /// Connection type name as registered in ConnectionFactory (SqlClient is pre registered).
         /// </summary>
-        public string ConnectionTypeName { get; set; } = "SqlClient";
+        internal string ConnectionTypeName { get; set; } = "SqlClient";
 
         /// <summary>
         /// When strict mapping set to false, Conversion to string will be based on this culture, default: CultureInfo.CurrentCulture 
@@ -31,4 +31,5 @@ namespace DevToys.PocoDB.Core.Config
         /// </summary>
         public bool StrictMapping { get; set; } = true;
     }
+
 }

@@ -19,7 +19,7 @@
     <RepositoryUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>#DataProviders, #SqlClient, #Poco, #Sql, #DbConnection, #DataReader</PackageTags>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

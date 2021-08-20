@@ -282,7 +282,7 @@
             <param name="connectionstring"></param>
             <returns></returns>
         </member>
-        <member name="M:DevToys.PocoDB.Core.Factory.ConnectionFactory.AddType``1(System.String)">
+        <member name="M:DevToys.PocoDB.Core.Factory.ConnectionFactory.AddType``1">
             <summary>
             
             </summary>

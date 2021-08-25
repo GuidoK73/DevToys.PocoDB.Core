@@ -243,6 +243,182 @@ namespace DevToys.PocoDB.Core
             return NetType.String;
         }
 
+        /// <summary>
+        /// Returns SqlDBType for a primitive C# type.
+        /// </summary>
+        public static DbType GetDbType(SqlDbType type)
+        {
+            switch (type)
+            {
+                case SqlDbType.BigInt:
+                    return DbType.Int64;
+
+                case SqlDbType.Binary:
+                    return DbType.Binary;
+
+                case SqlDbType.Bit:
+                    return DbType.Boolean;
+
+                case SqlDbType.Char:
+                    return DbType.String;
+
+                case SqlDbType.Date:
+                    return DbType.Date;
+
+                case SqlDbType.DateTime:
+                    return DbType.DateTime;
+
+                case SqlDbType.DateTime2:
+                    return DbType.DateTime2;
+
+                case SqlDbType.DateTimeOffset:
+                    return DbType.DateTimeOffset;
+
+                case SqlDbType.Decimal:
+                    return DbType.Decimal;
+
+                case SqlDbType.Float:
+                    return DbType.Double;
+
+                case SqlDbType.Image:
+                    return DbType.Binary;
+
+                case SqlDbType.Int:
+                    return DbType.Int32;
+
+                case SqlDbType.Money:
+                    return DbType.Decimal;
+
+                case SqlDbType.NChar:
+                    return DbType.StringFixedLength;
+
+                case SqlDbType.NText:
+                    return DbType.String;
+
+                case SqlDbType.NVarChar:
+                    return DbType.String;
+
+                case SqlDbType.Real:
+                    return DbType.Single;
+
+                case SqlDbType.SmallDateTime:
+                    return DbType.DateTime;
+
+                case SqlDbType.SmallInt:
+                    return DbType.Int16;
+
+                case SqlDbType.SmallMoney:
+                    return DbType.Decimal;
+
+                case SqlDbType.Text:
+                    return DbType.String;
+
+                case SqlDbType.Time:
+                    return DbType.Time;
+
+                case SqlDbType.Timestamp:
+                    return DbType.Time;
+
+                case SqlDbType.TinyInt:
+                    return DbType.Byte;
+
+                case SqlDbType.UniqueIdentifier:
+                    return DbType.Guid;
+
+                case SqlDbType.VarBinary:
+                    return DbType.Object;
+
+                case SqlDbType.VarChar:
+                    return DbType.String;
+
+                case SqlDbType.Variant:
+                    return DbType.Object;
+
+                case SqlDbType.Xml:
+                    return DbType.Xml;
+
+                case SqlDbType.Structured:
+                case SqlDbType.Udt:
+                    throw new DataException("Unsuported");
+            }
+
+            return DbType.String;
+        }
+
+        /// <summary>
+        /// Returns SqlDBType for a primitive C# type.
+        /// </summary>
+        public static DbType GetDbType(Type type)
+        {
+            type = Nullable.GetUnderlyingType(type) ?? type;
+
+            if (type == typeof(String))
+                return DbType.String; // Alternative: char[], char, NText, NChar, NText, NVarChar, Varchar
+
+            if (type == typeof(Char))
+                return DbType.String;
+
+            if (type == typeof(Guid))
+                return DbType.Guid;
+
+            if (type == typeof(Boolean))
+                return DbType.Boolean;
+
+            if (type == typeof(DateTime))
+                return DbType.DateTime; // Alternative: SmallDateTime or DateTime2
+
+            if (type == typeof(DateTimeOffset))
+                return DbType.DateTimeOffset;
+
+            if (type == typeof(TimeSpan))
+                return DbType.Time;
+
+            if (type == typeof(Byte))
+                return DbType.Byte;
+
+            if (type == typeof(SByte))
+                return DbType.SByte;
+
+            if (type == typeof(Int16))
+                return DbType.Int16;
+
+            if (type == typeof(Int32))
+                return DbType.Int32;
+
+            if (type == typeof(Int64))
+                return DbType.Int64;
+
+            if (type == typeof(UInt16))
+                return DbType.UInt16; // one larger to fit unsigned maximum
+
+            if (type == typeof(UInt32))
+                return DbType.UInt32; // one larger to fit unsigned maximum
+
+            if (type == typeof(UInt64))
+                return DbType.UInt64; // one larger to fit unsigned maximum
+
+            if (type == typeof(Single))
+                return DbType.Single;
+
+            if (type == typeof(Decimal))
+                return DbType.Decimal; // Alternative: Money, SmallMoney
+
+            if (type == typeof(Double))
+                return DbType.Double;
+
+            if (type == typeof(Byte[]))
+                return DbType.Binary;
+
+            if (type == typeof(Char[]))
+                return DbType.String; // Alternative: char[], char, NText, NChar, NText, NVarChar, Varchar
+
+            if (type == typeof(Object))
+                return DbType.Binary;
+
+            return DbType.String;
+        }
+
+
         public static string[] GetReaderColumns(IDataReader reader)
         {
             string[] _result = new string[reader.FieldCount];

@@ -63,6 +63,7 @@ namespace DevToys.PocoDB.Core.Attributes
         {
             object value = property.GetValue(commandObject);
             parameter.ParameterName = Name;
+            parameter.DbType = DataUtils.GetDbType(property.PropertyType);
             if (value == null)
                 parameter.Value = DBNull.Value;
             else            

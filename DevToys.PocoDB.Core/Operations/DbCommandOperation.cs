@@ -204,7 +204,7 @@ namespace DevToys.PocoDB.Core.Operations
                 RaisePreExecute(connection, command);
 
                 // TODO: implement version for CommandBehavior.SequentialAccess (this impacts ReadDataRow)
-                IDataReader _reader = command.ExecuteReader(CommandBehavior.KeyInfo);
+                IDataReader _reader = command.ExecuteReader(CommandBehavior.Default);
 
                 _Helper.GetParameters(command, commandObject);
 

@@ -471,6 +471,16 @@
             <param name="type"></param>
             <returns></returns>
         </member>
+        <member name="M:DevToys.PocoDB.Core.DataUtils.GetDbType(System.Data.SqlDbType)">
+            <summary>
+            Returns SqlDBType for a primitive C# type.
+            </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.DataUtils.GetDbType(System.Type)">
+            <summary>
+            Returns SqlDBType for a primitive C# type.
+            </summary>
+        </member>
         <member name="M:DevToys.PocoDB.Core.DataUtils.IsSimpleType(System.Type)">
             <summary>
             Determines whether a type is simple like string or int, etc.

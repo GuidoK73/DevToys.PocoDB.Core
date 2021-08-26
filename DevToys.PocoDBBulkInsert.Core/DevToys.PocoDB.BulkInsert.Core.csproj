@@ -9,6 +9,7 @@
     <Description>Bulkinsert wrapper on DevToys.PocoDB
 </Description>
     <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

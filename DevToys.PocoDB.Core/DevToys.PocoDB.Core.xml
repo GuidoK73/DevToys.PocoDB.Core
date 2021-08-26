@@ -316,33 +316,6 @@
         <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation`1.ReadDataRow(System.Data.IDataReader)">
             <summary>Reads a datarow and converts it to TObject</summary>
         </member>
-        <member name="T:DevToys.PocoDB.Core.Operations.BulkInsertOperation`1">
-             <summary>
-             SQLCLIENT CONNECTION ONLY
-            
-             Class for executing bulk insert operations. Wrapper arround System.Data.SqlClient.SqlBulkCopy.
-             </summary>
-             <typeparam name="TINSERTOBJECT">The input object</typeparam>
-        </member>
-        <member name="M:DevToys.PocoDB.Core.Operations.BulkInsertOperation`1.#ctor(System.String,System.Int32)">
-             <summary>
-            
-             </summary>
-             <param name="configConnectionKey">Reference to connection in DevToys.PocoDB config section</param>
-             <param name="batchsize"></param>
-        </member>
-        <member name="M:DevToys.PocoDB.Core.Operations.BulkInsertOperation`1.Insert(System.Int32)">
-            <summary>
-            Insert repetative Data. this is usefull when using the DBRandomParameter.
-            </summary>
-            <param name="repeat"></param>
-        </member>
-        <member name="M:DevToys.PocoDB.Core.Operations.BulkInsertOperation`1.Insert(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Bulk insert data
-            </summary>
-            <param name="data"></param>
-        </member>
         <member name="T:DevToys.PocoDB.Core.Operations.DbCommandOperation`1">
             <summary>
             Class for executing NonQuery or Scalar sql statements. Parameters are parsed by DbCommandOperation decorated with DBCommandAttribute and DBParameterAttribute attributes.

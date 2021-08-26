@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevToys.PocoDB.Core\DevToys.PocoDB.Core.csproj" />
+    <ProjectReference Include="..\DevToys.PocoDBBulkInsert.Core\DevToys.PocoDB.BulkInsert.Core.csproj" />
   </ItemGroup>
 
 </Project>

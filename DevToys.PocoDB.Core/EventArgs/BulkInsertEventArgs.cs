@@ -4,6 +4,6 @@ namespace DevToys.PocoDB.Core
 {
     public sealed class BulkInsertEventArgs : EventArgs
     {
-        public int RowsProcessed { get; internal set; }
+        public int RowsProcessed { get;  set; }
     }
 }

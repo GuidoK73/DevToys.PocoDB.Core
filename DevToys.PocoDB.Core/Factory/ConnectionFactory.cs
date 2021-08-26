@@ -8,7 +8,7 @@ namespace DevToys.PocoDB.Core.Factory
     /// <summary>
     /// Default Connections: SqlClient
     /// </summary>
-    internal sealed class ConnectionFactory
+    public sealed class ConnectionFactory
     {
         private static ConnectionFactory _Instance;
 

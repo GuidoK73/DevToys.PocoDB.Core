@@ -10,24 +10,20 @@
 - Map Poco Objects to Stored Procedure Commands / Query Commands 
 - Map ResultSets to Poco Objects
 - Inject third party DataProviders ( DbConnection )
-- Perform BulkInsert (SqlServer Only)
 - Translate query results to dynamic
 - Random Data Insert
 - Transaction Support
-</Description>
+
+BulkInsert moved to other NugetPackage: DevToys.PocoDB.BulkInsert.Core</Description>
     <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>#DataProviders, #SqlClient, #Poco, #Sql, #DbConnection, #DataReader</PackageTags>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>E:\DEV\GIT\DevToys.PocoDB.Core\DevToys.PocoDB.Core\DevToys.PocoDB.Core.xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-  </ItemGroup>
 
 </Project>

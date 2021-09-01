@@ -10,6 +10,60 @@ namespace DevToys.PocoDB.Core.RandomData
         private static readonly int _Seed = DateTime.Now.Millisecond;
         private static readonly Random Rnd = new Random(_Seed);
 
+        public static string IRealyDontCare()
+        {
+            int _x = RandomNumber(1, 20);
+            switch (_x)
+            {
+                case 1:
+                    return RandomWord();
+                case 2:
+                    return RandomCountry();
+                case 3:
+                    return RandomStreet();
+                case 4:
+                    return RandomCity();
+                case 5:
+                    return RandomFirstName();
+                case 6:
+                    return RandomLastName();
+                case 7:
+                    return RandomColorName();
+                case 8:
+                    return RandomGuid();
+                case 9:
+                    return RandomNumber(1, 10000).ToString();
+                case 10:
+                    return RandomBSNNumber();
+                case 11:
+                    return RandomAdress();
+                case 12:
+                    return RandomAdressLines();
+                case 13:
+                    return RandomDateTime(DateTime.MinValue, DateTime.MaxValue).ToString();
+                case 14:
+                    return RandomText(100);
+                case 15:
+                    return RandomUrl();
+                case 16:
+                    return RandomBool(50).ToString();
+                case 17:
+                    return RandomPassword(10);
+                case 18:
+                    return RandomFruit();
+                case 19:
+                    return RandomVegatable();
+                case 20:
+                    return RandomMovie();
+            }
+            return string.Empty;
+        }
+        public static string RandomMovie() => Movies.Items[Rnd.Next(0, Words.Items.Length - 1)];
+
+        public static string RandomFruit() => Fruits.Items[Rnd.Next(0, Words.Items.Length - 1)];
+
+        public static string RandomVegatable() => Vegetables.Items[Rnd.Next(0, Words.Items.Length - 1)];
+
         public static string RandomWord() => Words.Items[Rnd.Next(0, Words.Items.Length - 1)];
 
         public static string RandomCountry() => Countries.Items[Rnd.Next(0, Countries.Items.Length - 1)];

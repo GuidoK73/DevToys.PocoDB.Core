@@ -60,7 +60,20 @@
         BSNNumber = 18,
 
         /// <summary>Random item out of item array  </summary>
-        Item = 19
+        Item = 19,
+
+        /// <summary>Random Vegatable name </summary>
+        RandomVegatable = 20,
+
+        /// <summary>Random Fruit name </summary>
+        RandomFruit = 21,
+
+        /// <summary>Random Movie name </summary>
+        RandomMovie = 22,
+
+        /// <summary>Random whatever name </summary>
+        IRealyDontCare = 23,
+
     }
 
     public enum StrictMapping

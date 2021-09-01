@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>DevToys.PocoDB.BulkInsert.Core</RootNamespace>
+    <AssemblyName>DevToys.PocoDB.BulkInsert.Core</AssemblyName>
+    <Authors>GuidoK73</Authors>
+    <Company>.</Company>
+    <Description>Bulkinsert wrapper on DevToys.PocoDB
+</Description>
+    <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DevToys.PocoDB.Core\DevToys.PocoDB.Core.csproj" />
+  </ItemGroup>
+
+</Project>

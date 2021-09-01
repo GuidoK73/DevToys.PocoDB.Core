@@ -245,6 +245,18 @@
         <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.Item">
             <summary>Random item out of item array  </summary>
         </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.RandomVegatable">
+            <summary>Random Vegatable name </summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.RandomFruit">
+            <summary>Random Fruit name </summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.RandomMovie">
+            <summary>Random Movie name </summary>
+        </member>
+        <member name="F:DevToys.PocoDB.Core.Enums.RandomStringType.IRealyDontCare">
+            <summary>Random whatever name </summary>
+        </member>
         <member name="F:DevToys.PocoDB.Core.Enums.StrictMapping.ByConfigSetting">
             <summary>Fieldmapping determined by Config setting StrictMapping.</summary>
         </member>

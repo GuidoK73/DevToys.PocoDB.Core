@@ -234,6 +234,18 @@ namespace DevToys.PocoDB.Core.Attributes
 
                 case RandomStringType.BSNNumber:
                     return RandomHelper.RandomBSNNumber();
+
+                case RandomStringType.RandomFruit:
+                    return RandomHelper.RandomFruit();
+
+                case RandomStringType.RandomVegatable:
+                    return RandomHelper.RandomVegatable();
+
+                case RandomStringType.RandomMovie:
+                    return RandomHelper.RandomMovie();
+
+                case RandomStringType.IRealyDontCare:
+                    return RandomHelper.IRealyDontCare();
             }
 
             return RandomHelper.RandomWord();

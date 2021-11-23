@@ -1,5 +1,7 @@
-﻿using DevToys.PocoDB.Core.Attributes;
+﻿using Delegates;
+using DevToys.PocoDB.Core.Attributes;
 using DevToys.PocoDB.Core.Config;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -13,8 +15,11 @@ namespace DevToys.PocoDB.Core
         private readonly ConnectionConfig _Config;
         private bool _Initialized = false;
 
-        DBParameterAttribute[] _Attributes;
-        PropertyInfo[] _Properties;
+        private DBParameterAttribute[] _Attributes;
+        private PropertyInfo[] _Properties;
+        private Func<object, object>[] _PropertyGetters = null;
+        private Action<object, object>[] _PropertySetters = null;
+
         List<int> _OutputParameters = new List<int>();
 
         public DbCommandOperationHelper(ConnectionConfig config)
@@ -31,11 +36,12 @@ namespace DevToys.PocoDB.Core
                 var _attribute = _Attributes[index];
                 var _property = _Properties[index];
                 var _parameter = command.Parameters[_attribute.Name];
+                var _propertySetter = _PropertySetters[index];
 
                 if (!DataUtils.IsSimpleType(_property.PropertyType) || _property.PropertyType.IsEnum)
                     throw new DataException("Output parameter property {0} must be a simple type", _property.Name);
 
-                _attribute.GetParameterValue<TCOMMAND>(commandObject, _property, _parameter);
+                _attribute.GetParameterValue<TCOMMAND>(commandObject, _property, _propertySetter, _parameter);
             }
         }
 
@@ -57,6 +63,8 @@ namespace DevToys.PocoDB.Core
 
             _Attributes = new DBParameterAttribute[_attributes.Keys.Count];
             _Properties = new PropertyInfo[_attributes.Keys.Count];
+            _PropertyGetters = new Func<object, object>[_attributes.Keys.Count];
+            _PropertySetters = new Action<object, object>[_attributes.Keys.Count];
 
             int _index = 0;
 
@@ -65,6 +73,8 @@ namespace DevToys.PocoDB.Core
                 var _attribute = _attributes[key];
                 _Attributes[_index] = _attribute;
                 _Properties[_index] = _properties[key];
+                _PropertyGetters[_index] = typeof(TCOMMAND).PropertyGet(_properties[key].Name);
+                _PropertySetters[_index] = typeof(TCOMMAND).PropertySet(_properties[key].Name);
 
                 if (_attribute.Direction == ParameterDirection.InputOutput || _attribute.Direction == ParameterDirection.Output || _attribute.Direction == ParameterDirection.ReturnValue)
                     _OutputParameters.Add(_index);
@@ -84,8 +94,9 @@ namespace DevToys.PocoDB.Core
                 var _attribute = _Attributes[index];
                 var _property = _Properties[index];
                 var _parameter = command.CreateParameter();
+                var _propertyGetter = _PropertyGetters[index];
                 _parameter.Direction = _attribute.Direction;
-                _attribute.SetParameterValue<TCOMMAND>(commandObject, _property, _parameter);
+                _attribute.SetParameterValue<TCOMMAND>(commandObject, _property, _propertyGetter, _parameter);
                 command.Parameters.Add(_parameter);
             }
         }

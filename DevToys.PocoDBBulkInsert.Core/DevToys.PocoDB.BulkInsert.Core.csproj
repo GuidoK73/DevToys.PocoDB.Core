@@ -7,9 +7,14 @@
     <Authors>GuidoK73</Authors>
     <Company>.</Company>
     <Description>Bulkinsert wrapper on DevToys.PocoDB
+
+V1.1.0
+Improved performance
+
 </Description>
     <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

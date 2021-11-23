@@ -17,14 +17,14 @@ namespace DevToys.PocoDB.Core.Attributes
         /// <param name="name">DbParameter Name</param>
         public DBStringArrayParameterAttribute(string name) : base(name) { }
 
-        public override void GetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, IDbDataParameter parameter)
+        public override void GetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, Action<object, object> propertySetter, IDbDataParameter parameter)
         {
             throw new DataException($"Output parameters not supported for '{nameof(DBStringArrayParameterAttribute)}'.");
         }
 
-        public override void SetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, IDbDataParameter parameter)
+        public override void SetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, Func<object, object> propertyGetter, IDbDataParameter parameter)
         {
-            object _value = property.GetValue(commandObject);
+            object _value = propertyGetter(commandObject);
             string _valuestring = null;
             bool _isenumerable = (_value.GetType().GetInterface(nameof(IEnumerable)) != null);
             if (_isenumerable)

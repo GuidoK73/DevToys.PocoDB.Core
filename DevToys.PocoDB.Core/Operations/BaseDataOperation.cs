@@ -59,7 +59,7 @@ namespace DevToys.PocoDB.Core.Operations
             var _result = new TRESULTOBJECT();
             // create a new base object so we can invoke base methods.
             for (int index = 0; index < reader.FieldCount; index++)
-                SetPropertyValue(_Helper.Properties[index], _result, reader.GetValue(index), reader.GetFieldType(index), _Helper.Attributes[index].ReaderDefaultValue, _Helper.Attributes[index].StrictMapping);
+                SetPropertyValue(_Helper.Properties[index], _Helper.PropertySetters[index], _result, reader.GetValue(index), reader.GetFieldType(index), _Helper.Attributes[index].ReaderDefaultValue, _Helper.Attributes[index].StrictMapping);
 
             return _result;
         }
@@ -81,7 +81,7 @@ namespace DevToys.PocoDB.Core.Operations
             }
         }
 
-        private void SetPropertyValue(PropertyInfo propertyInfo, TRESULTOBJECT dataobject, object value, Type valueType, object defaultvalue, StrictMapping strictField)
+        private void SetPropertyValue(PropertyInfo propertyInfo, Action<object, object> propertySetter, TRESULTOBJECT dataobject, object value, Type valueType, object defaultvalue, StrictMapping strictField)
         {
             if (value == DBNull.Value || value == null)
             {
@@ -90,14 +90,14 @@ namespace DevToys.PocoDB.Core.Operations
                     if (Nullable.GetUnderlyingType(propertyInfo.PropertyType) == null)
                         throw new DataException("Property {0} cannot contain null value", propertyInfo.Name);
                 }
-
-                propertyInfo.SetValue(dataobject, defaultvalue, null);
+                propertySetter(dataobject, defaultvalue);
                 return;
             }
 
             if (propertyInfo.PropertyType.IsEnum)
             {
-                propertyInfo.SetValue(dataobject, Enum.Parse(propertyInfo.PropertyType, System.Convert.ToString(value)), null);
+                var _enumValue = Enum.Parse(propertyInfo.PropertyType, System.Convert.ToString(value));
+                propertySetter(dataobject, _enumValue);
                 return;
             }
 
@@ -105,7 +105,7 @@ namespace DevToys.PocoDB.Core.Operations
             {
                 if (propertyInfo.PropertyType == valueType)
                 {
-                    propertyInfo.SetMethod.Invoke(dataobject, new object[] { value });
+                    propertySetter(dataobject, value);
                     return;
                 }
 
@@ -113,9 +113,14 @@ namespace DevToys.PocoDB.Core.Operations
             }
 
             if (propertyInfo.PropertyType == valueType)
-                propertyInfo.SetMethod.Invoke(dataobject, new object[] { value });
+            {
+                propertySetter(dataobject, value);
+            }
             else
-                propertyInfo.SetMethod.Invoke(dataobject, new object[] { Convert.ChangeType(value, propertyInfo.PropertyType, Config.CultureInfo) });
+            {
+                var _convertedValue = Convert.ChangeType(value, propertyInfo.PropertyType, Config.CultureInfo);
+                propertySetter(dataobject, _convertedValue);
+            }
         }
     }
 }

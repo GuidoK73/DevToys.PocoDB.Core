@@ -14,12 +14,16 @@
 - Random Data Insert
 - Transaction Support
 
+V1.1.0
+Improved performance
+
+V1.0.9
 BulkInsert moved to other NugetPackage: DevToys.PocoDB.BulkInsert.Core</Description>
     <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>#DataProviders, #SqlClient, #Poco, #Sql, #DbConnection, #DataReader</PackageTags>
-    <Version>1.0.9</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

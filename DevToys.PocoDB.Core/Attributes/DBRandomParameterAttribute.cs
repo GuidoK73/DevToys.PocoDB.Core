@@ -62,12 +62,13 @@ namespace DevToys.PocoDB.Core.Attributes
             return DataUtils.GetNetType(type) == expectedType;
         }
 
-        public override void SetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, IDbDataParameter parameter)
+        public override void SetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, Func<object, object> propertyGetter, IDbDataParameter parameter)
         {
             // TODO:
             // Use Items when item array matches DataUtils.NetType
 
-            object _value = property.GetValue(commandObject);
+            //object _value = property.GetValue(commandObject);
+            object _value = propertyGetter(commandObject);
             parameter.ParameterName = Name;
 
             switch (DataUtils.GetNetType(property.PropertyType))

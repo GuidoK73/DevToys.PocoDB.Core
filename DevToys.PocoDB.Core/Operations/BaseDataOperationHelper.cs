@@ -1,4 +1,6 @@
-﻿using DevToys.PocoDB.Core.Attributes;
+﻿using Delegates;
+using DevToys.PocoDB.Core.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
@@ -16,6 +18,9 @@ namespace DevToys.PocoDB.Core.Operations
         public DBFieldAttribute[] Attributes { get; private set; }
         public PropertyInfo[] Properties { get; private set; }
 
+        public Action<object, object>[] PropertySetters = null;
+
+
         public void Initialize(IDataReader reader)
         {
             if (_Initialized)
@@ -28,7 +33,9 @@ namespace DevToys.PocoDB.Core.Operations
             var _attributes = new Dictionary<string, DBFieldAttribute>();
             var _properties = new Dictionary<string, PropertyInfo>();
 
-            foreach (PropertyInfo property in typeof(TRESULTOBJECT).GetProperties())
+            Type _type = typeof(TRESULTOBJECT);
+
+            foreach (PropertyInfo property in _type.GetProperties())
             {
                 DBFieldAttribute _attribute = property.GetCustomAttribute<DBFieldAttribute>(false);
                 if (_attribute != null)
@@ -51,13 +58,16 @@ namespace DevToys.PocoDB.Core.Operations
 
             // Convert Property / Attribute Dictionaries to Ordinal Array.
             Attributes = new DBFieldAttribute[_readerFieldNames.Length];
-            Properties = new PropertyInfo[_readerFieldNames.Length];
+            Properties = new PropertyInfo[_readerFieldNames.Length];           
+            PropertySetters = new Action<object, object>[_readerFieldNames.Length];
+
 
             for (int index = 0; index < _readerFieldNames.Length; index++)
             {
                 string _name = _readerFieldNames[index];
                 Attributes[index] = _attributes[_name];
                 Properties[index] = _properties[_name];
+                PropertySetters[index] = _type.PropertySet(Properties[index].Name);
             }
 
             _Initialized = true;

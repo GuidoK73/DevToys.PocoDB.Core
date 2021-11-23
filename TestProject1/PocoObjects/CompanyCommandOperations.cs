@@ -14,7 +14,7 @@ namespace PocoDBConsoleAppTest.Data
     }
 
 
-    [DBCommand(@"select top 100 id, [name], Adress, Country, ZipCode, HouseNumber, CompanyType, Text from dbo.Company", commandtype: CommandType.Text)]
+    [DBCommand(@"select id, [name], Adress, Country, ZipCode, HouseNumber, CompanyType, Text from dbo.Company", commandtype: CommandType.Text)]
     public class GetCompanyAll
     { }
 

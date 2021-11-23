@@ -32,16 +32,17 @@ namespace DevToys.PocoDB.Core.Attributes
         /// <summary>
         /// Occurs on Output parameters.
         /// </summary>
-        public virtual void GetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, IDbDataParameter parameter)
+        public virtual void GetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, Action<object, object> propertySetter, IDbDataParameter parameter)
         {
             object _val = parameter.Value;
 
             if (_val != DBNull.Value)
             {
                 if (property.PropertyType.IsEnum)
-                    property.SetValue(commandObject, Enum.Parse(property.PropertyType, _val.ToString()), null);
-                else
-                    property.SetValue(commandObject, _val);
+                    _val = Enum.Parse(property.PropertyType, _val.ToString());
+
+                //property.SetValue(commandObject, _val);
+                propertySetter(commandObject, _val);
             }
             else
             {
@@ -50,18 +51,22 @@ namespace DevToys.PocoDB.Core.Attributes
                         throw new DataException("Output parameter property {0} cannot contain null value", property.Name);
 
                 if (property.PropertyType.IsEnum)
-                    property.SetValue(commandObject, Enum.Parse(property.PropertyType, _val.ToString()), null);
+                {
+                    propertySetter(commandObject, Enum.Parse(property.PropertyType, null));
+                }
                 else
-                    property.SetValue(commandObject, null);
+                {
+                    propertySetter(commandObject, null);
+                }
             }
         }
 
         /// <summary>
         /// Occurs on Input and Output parameters.
         /// </summary>
-        public virtual void SetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, IDbDataParameter parameter)
+        public virtual void SetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, Func<object, object> propertyGetter, IDbDataParameter parameter)
         {
-            object value = property.GetValue(commandObject);
+            object value = propertyGetter(commandObject);
             parameter.ParameterName = Name;
             parameter.DbType = DataUtils.GetDbType(property.PropertyType);
             if (value == null)

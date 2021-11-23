@@ -1,4 +1,5 @@
-﻿using DevToys.PocoDB.Core.Attributes;
+﻿using Delegates;
+using DevToys.PocoDB.Core.Attributes;
 using DevToys.PocoDB.Core.Factory;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,8 @@ namespace DevToys.PocoDB.Core.Operations
 
         private DBParameterAttribute[] _DbParameters;
 
-        private PropertyInfo[] _DBProperties;
+        private PropertyInfo[] _Properties;
+        private Func<object, object>[] _PropertyGetters;
 
         private bool _Initialized = false;
         private string[] _Names;
@@ -75,7 +77,7 @@ namespace DevToys.PocoDB.Core.Operations
 
             for (int index = 0; index < _Names.Length; index++)
             {
-                var property = _DBProperties[index];
+                var property = _Properties[index];
                 var column = new DataColumn(_Names[index], property.PropertyType);
                 _table.Columns.Add(column);
             }
@@ -88,8 +90,9 @@ namespace DevToys.PocoDB.Core.Operations
 
                 for (int index = 0; index < _Names.Length; index++)
                 {
-                    var property = _DBProperties[index];
-                    var parameter = GetParameter(item, _DbParameters[index], property);
+                    var property = _Properties[index];
+                    var propertyGetter = _PropertyGetters[index];
+                    var parameter = GetParameter(item, _DbParameters[index], property, propertyGetter);
                     row[_Names[index]] = Convert.ChangeType(parameter.Value, property.PropertyType);
                 }
 
@@ -107,10 +110,10 @@ namespace DevToys.PocoDB.Core.Operations
                 Insert(_table);
         }
 
-        private IDbDataParameter GetParameter(TINSERTOBJECT commandObject, DBParameterAttribute attribute, PropertyInfo property)
+        private IDbDataParameter GetParameter(TINSERTOBJECT commandObject, DBParameterAttribute attribute, PropertyInfo property, Func<object, object> propertyGetter)
         {
             IDbDataParameter parameter = new SqlParameter { Direction = attribute.Direction };
-            attribute.SetParameterValue(commandObject, property, parameter);
+            attribute.SetParameterValue(commandObject, property, propertyGetter, parameter);
             return parameter;
         }
 
@@ -124,7 +127,7 @@ namespace DevToys.PocoDB.Core.Operations
                 .OrderBy(p => p)
                 .ToArray();
 
-            _DBProperties = typeof(TINSERTOBJECT).GetProperties().Where(p => p.GetCustomAttribute(typeof(DBParameterAttribute)) != null)
+            _Properties = typeof(TINSERTOBJECT).GetProperties().Where(p => p.GetCustomAttribute(typeof(DBParameterAttribute)) != null)
                 .Select(p => new { Name = p.GetCustomAttribute<DBParameterAttribute>().Name, Property = p })
                 .OrderBy(p => p.Name)
                 .Select(p => p.Property)
@@ -134,6 +137,12 @@ namespace DevToys.PocoDB.Core.Operations
                 .Select(p => new { Name = p.GetCustomAttribute<DBParameterAttribute>().Name, Parameter = p.GetCustomAttribute<DBParameterAttribute>() })
                 .OrderBy(p => p.Name)
                 .Select(p => p.Parameter)
+                .ToArray();
+
+            _PropertyGetters = typeof(TINSERTOBJECT).GetProperties().Where(p => p.GetCustomAttribute(typeof(DBParameterAttribute)) != null)
+                .Select(p => new { Name = p.GetCustomAttribute<DBParameterAttribute>().Name, Property = p })
+                .OrderBy(p => p.Name)
+                .Select(p => typeof(TINSERTOBJECT).PropertyGet(p.Name))
                 .ToArray();
 
             _Initialized = true;

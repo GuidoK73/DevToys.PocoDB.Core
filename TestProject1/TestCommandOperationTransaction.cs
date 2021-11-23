@@ -75,7 +75,7 @@ namespace DevToys.PocoDB.Core.UnitTests
 
                         transaction.Commit();
                     }
-                    catch (Exception exception)
+                    catch (Exception)
                     {
                         transaction.Rollback();
                     }

@@ -415,6 +415,9 @@ namespace DevToys.PocoDB.Core
             if (type == typeof(Object))
                 return DbType.Binary;
 
+            if (type.IsEnum)
+                return DbType.Int32;
+
             return DbType.String;
         }
 

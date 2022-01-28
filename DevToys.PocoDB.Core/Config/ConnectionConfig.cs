@@ -1,5 +1,4 @@
-﻿using System.Data.Common;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace DevToys.PocoDB.Core.Config
 {
@@ -16,7 +15,7 @@ namespace DevToys.PocoDB.Core.Config
         public string ConnectionTypeName { get; set; } = "SqlClient";
 
         /// <summary>
-        /// When strict mapping set to false, Conversion to string will be based on this culture, default: CultureInfo.CurrentCulture 
+        /// When strict mapping set to false, Conversion to string will be based on this culture, default: CultureInfo.CurrentCulture
         /// </summary>
         public CultureInfo CultureInfo { get; set; } = CultureInfo.CurrentCulture;
 
@@ -31,5 +30,4 @@ namespace DevToys.PocoDB.Core.Config
         /// </summary>
         public bool StrictMapping { get; set; } = true;
     }
-
 }

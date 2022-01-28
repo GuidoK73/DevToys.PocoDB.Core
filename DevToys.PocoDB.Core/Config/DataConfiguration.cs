@@ -22,8 +22,7 @@ namespace DevToys.PocoDB.Core.Config
         /// </summary>
         public static DataConfiguration Instance => _Instance ?? (_Instance = new DataConfiguration());
 
-
-        public void Add<T>(ConnectionConfig config) where T: DbConnection
+        public void Add<T>(ConnectionConfig config) where T : DbConnection
         {
             if (_Connections.ContainsKey(config.Key.ToLower()))
                 throw new DataException(string.Format("Could not add Data Connection named: '{0}'", config.Key));
@@ -31,10 +30,9 @@ namespace DevToys.PocoDB.Core.Config
             _Connections.Add(config.Key.ToLower(), config);
 
             config.ConnectionTypeName = typeof(T).Name;
-            
+
             ConnectionFactory.Instance.AddType<T>();
         }
-
 
         public ConnectionConfig Get(string key)
         {

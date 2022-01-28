@@ -19,15 +19,15 @@ Improved performance
 
 V1.0.9
 BulkInsert moved to other NugetPackage: DevToys.PocoDB.BulkInsert.Core</Description>
-    <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core/wiki</PackageProjectUrl>
     <RepositoryUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>#DataProviders, #SqlClient, #Poco, #Sql, #DbConnection, #DataReader</PackageTags>
-    <Version>1.1.0</Version>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>E:\DEV\GIT\DevToys.PocoDB.Core\DevToys.PocoDB.Core\DevToys.PocoDB.Core.xml</DocumentationFile>
+    <DocumentationFile>F:\DEV\GIT\DevToys.PocoDB.Core\DevToys.PocoDB.Core\DevToys.PocoDB.Core.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

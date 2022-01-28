@@ -13,7 +13,13 @@ namespace DevToys.PocoDB.Core.UnitTests
     {
         public TestCommandOperation()
         {
-            DataConfiguration.Instance.Add<SqlConnection>(new ConnectionConfig()  {Key = "Local", ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"  } );
+            DataConfiguration.Instance.Add<SqlConnection>(
+                new ConnectionConfig()  
+                {
+                    Key = "Local", 
+                    ConnectionString = @"Server=LAPTOP-GUIDO\SQLEXPRESS;Database=Misc;Trusted_Connection=True;"  
+                } 
+            );
         }
 
         [TestMethod]
@@ -119,6 +125,7 @@ namespace DevToys.PocoDB.Core.UnitTests
             };
             var operationInsert = new DbCommandOperation<InsertCompanyBySqlStatement>("Local");
             operationInsert.ExecuteNonQuery(insert);
+
 
         }
 

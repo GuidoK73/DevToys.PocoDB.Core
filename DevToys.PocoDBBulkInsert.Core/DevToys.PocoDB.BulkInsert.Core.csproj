@@ -12,9 +12,9 @@ V1.1.0
 Improved performance
 
 </Description>
-    <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core/wiki</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

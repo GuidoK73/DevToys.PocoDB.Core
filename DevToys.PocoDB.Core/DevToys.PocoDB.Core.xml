@@ -145,7 +145,7 @@
         </member>
         <member name="P:DevToys.PocoDB.Core.Config.ConnectionConfig.CultureInfo">
             <summary>
-            When strict mapping set to false, Conversion to string will be based on this culture, default: CultureInfo.CurrentCulture 
+            When strict mapping set to false, Conversion to string will be based on this culture, default: CultureInfo.CurrentCulture
             </summary>
         </member>
         <member name="P:DevToys.PocoDB.Core.Config.ConnectionConfig.Key">

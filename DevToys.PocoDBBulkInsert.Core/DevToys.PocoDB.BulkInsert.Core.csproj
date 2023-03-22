@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>DevToys.PocoDB.BulkInsert.Core</RootNamespace>
     <AssemblyName>DevToys.PocoDB.BulkInsert.Core</AssemblyName>
     <Authors>GuidoK73</Authors>
@@ -10,12 +10,20 @@
 
 V1.1.0
 Improved performance
-
 </Description>
     <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core/wiki</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageLicenseFile>GPL.txt</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\CodeLibrary\CodeLibrary\GPL.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
@@ -23,6 +31,13 @@ Improved performance
 
   <ItemGroup>
     <ProjectReference Include="..\DevToys.PocoDB.Core\DevToys.PocoDB.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

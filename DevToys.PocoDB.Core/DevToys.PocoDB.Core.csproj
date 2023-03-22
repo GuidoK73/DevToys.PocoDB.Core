@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>GuidoK73</Authors>
     <Company>.</Company>
@@ -14,20 +14,40 @@
 - Random Data Insert
 - Transaction Support
 
+</Description>
+    <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core/wiki/DevToys.PocoDB.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>#DataProviders, #SqlClient, #Poco, #Sql, #DbConnection, #DataReader</PackageTags>
+    <Version>1.1.3</Version>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageReleaseNotes>V1.1.3
+Updated Readme and moved to Net6.0
+
 V1.1.0
 Improved performance
 
 V1.0.9
-BulkInsert moved to other NugetPackage: DevToys.PocoDB.BulkInsert.Core</Description>
-    <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core/wiki</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</RepositoryUrl>
-    <RepositoryType>GIT</RepositoryType>
-    <PackageTags>#DataProviders, #SqlClient, #Poco, #Sql, #DbConnection, #DataReader</PackageTags>
-    <Version>1.1.2</Version>
+BulkInsert moved to other NugetPackage: DevToys.PocoDB.BulkInsert.Core</PackageReleaseNotes>
+    <PackageLicenseFile>GPL.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>F:\DEV\GIT\DevToys.PocoDB.Core\DevToys.PocoDB.Core\DevToys.PocoDB.Core.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\CodeLibrary\CodeLibrary\GPL.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

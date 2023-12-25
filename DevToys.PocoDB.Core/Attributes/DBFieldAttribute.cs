@@ -9,6 +9,9 @@ namespace DevToys.PocoDB.Core.Attributes
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public sealed class DBFieldAttribute : Attribute
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public DBFieldAttribute(string field)
         {
             Field = field;

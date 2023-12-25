@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace DevToys.PocoDB.Core.Attributes
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public sealed class DBRandomParameterAttribute : DBParameterAttribute
     {
@@ -62,6 +65,14 @@ namespace DevToys.PocoDB.Core.Attributes
             return DataUtils.GetNetType(type) == expectedType;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TCOMMAND"></typeparam>
+        /// <param name="commandObject"></param>
+        /// <param name="property"></param>
+        /// <param name="propertyGetter"></param>
+        /// <param name="parameter"></param>
         public override void SetParameterValue<TCOMMAND>(TCOMMAND commandObject, PropertyInfo property, Func<object, object> propertyGetter, IDbDataParameter parameter)
         {
             // TODO:

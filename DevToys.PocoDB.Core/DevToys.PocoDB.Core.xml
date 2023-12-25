@@ -40,6 +40,11 @@
             Relates a property to a DB field.
             </summary>
         </member>
+        <member name="M:DevToys.PocoDB.Core.Attributes.DBFieldAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:DevToys.PocoDB.Core.Attributes.DBFieldAttribute.Field">
             <summary>
             DB Field to map to the property
@@ -86,6 +91,11 @@
             Occurs on Input and Output parameters.
             </summary>
         </member>
+        <member name="T:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.PercentageNull">
             <summary>
             What percentage should be random at null.
@@ -128,6 +138,16 @@
             <summary>
             Determines the type of random data for string properties.
             </summary>
+        </member>
+        <member name="M:DevToys.PocoDB.Core.Attributes.DBRandomParameterAttribute.SetParameterValue``1(``0,System.Reflection.PropertyInfo,System.Func{System.Object,System.Object},System.Data.IDbDataParameter)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TCOMMAND"></typeparam>
+            <param name="commandObject"></param>
+            <param name="property"></param>
+            <param name="propertyGetter"></param>
+            <param name="parameter"></param>
         </member>
         <!-- Badly formed XML comment ignored for member "T:DevToys.PocoDB.Core.Attributes.DBStringArrayParameterAttribute" -->
         <member name="M:DevToys.PocoDB.Core.Attributes.DBStringArrayParameterAttribute.#ctor(System.String)">
@@ -270,6 +290,11 @@
             Default Connections: SqlClient
             </summary>
         </member>
+        <member name="P:DevToys.PocoDB.Core.Factory.ConnectionFactory.Instance">
+            <summary>
+            Returns singleton instance for ConnectionFactory.
+            </summary>
+        </member>
         <member name="M:DevToys.PocoDB.Core.Factory.ConnectionFactory.Create(System.String,System.String)">
             <summary>
             Creates a DbConnection for connectionTypeName and sets the connectionString.
@@ -278,12 +303,16 @@
             <param name="connectionstring"></param>
             <returns></returns>
         </member>
+        <member name="M:DevToys.PocoDB.Core.Factory.ConnectionFactory.GetType(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DevToys.PocoDB.Core.Factory.ConnectionFactory.AddType``1">
             <summary>
             
             </summary>
             <typeparam name="TCONNECTION">Type to add</typeparam>
-            <param name="connectionTypeName">Name to use as reference ConnectionType in configuration.</param>
         </member>
         <member name="M:DevToys.PocoDB.Core.Operations.BaseDataOperation.#ctor(System.String)">
             <param name="configConnectionName">Points to ConnectionString Configuration in section DevToys.PocoDB in App.Config</param>

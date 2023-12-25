@@ -1,20 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <RootNamespace>DevToys.PocoDB.BulkInsert.Core</RootNamespace>
     <AssemblyName>DevToys.PocoDB.BulkInsert.Core</AssemblyName>
     <Authors>GuidoK73</Authors>
     <Company>.</Company>
-    <Description>Bulkinsert wrapper on DevToys.PocoDB
+    <Description>
+		Bulkinsert wrapper on DevToys.PocoDB
 
-V1.1.0
-Improved performance
-</Description>
-    <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core/wiki</PackageProjectUrl>
+		Readme:
+		https://www.nuget.org/packages/DevToys.PocoDB.BulkInsert.Core/#readme-body-tab
+	</Description>
+	  <PackageTags>Bulk Insert;BulkInsert;Sql Server;Sql Client;SqlServer;DataProviders;SqlClient;Poco;Sql;DbConnection;DataReader</PackageTags>
+	  <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core/wiki</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.2</Version>
-    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <Version>1.1.4</Version>
     <PackageLicenseFile>GPL.txt</PackageLicenseFile>
   </PropertyGroup>
 
@@ -33,11 +34,5 @@ Improved performance
     <ProjectReference Include="..\DevToys.PocoDB.Core\DevToys.PocoDB.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Readme.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
 
 </Project>

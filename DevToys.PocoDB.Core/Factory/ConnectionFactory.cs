@@ -16,6 +16,9 @@ namespace DevToys.PocoDB.Core.Factory
 
         private ConnectionFactory() { }
 
+        /// <summary>
+        /// Returns singleton instance for ConnectionFactory.
+        /// </summary>
         public static ConnectionFactory Instance => _Instance ?? (_Instance = new ConnectionFactory());
 
         /// <summary>
@@ -32,13 +35,15 @@ namespace DevToys.PocoDB.Core.Factory
             return Activator.CreateInstance(connectionTypes[connectionTypeName], connectionstring) as DbConnection;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Type GetType(string connectionTypeName) => !connectionTypes.ContainsKey(connectionTypeName) ? null : connectionTypes[connectionTypeName];
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TCONNECTION">Type to add</typeparam>
-        /// <param name="connectionTypeName">Name to use as reference ConnectionType in configuration.</param>
         public void AddType<TCONNECTION>() where TCONNECTION : DbConnection
         {
             string _name = typeof(TCONNECTION).Name;

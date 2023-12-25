@@ -1,26 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>GuidoK73</Authors>
     <Company>.</Company>
-    <Description>Simple Database Sql to Poco Mapper.
+    <Description>
+		Simple Database Sql to Poco Mapper.
 
-- Map Poco Objects to Stored Procedure Commands / Query Commands 
-- Map ResultSets to Poco Objects
-- Inject third party DataProviders ( DbConnection )
-- Translate query results to dynamic
-- Random Data Insert
-- Transaction Support
+		- Map Poco Objects to Stored Procedure Commands / Query Commands
+		- Map ResultSets to Poco Objects
+		- Inject third party DataProviders ( DbConnection )
+		- Translate query results to dynamic
+		- Random Data Insert
+		- Transaction Support
 
-</Description>
+		Readme:
+		https://www.nuget.org/packages/DevToys.PocoDB.Core/#readme-body-tab
+
+	</Description>
     <PackageProjectUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core/wiki/DevToys.PocoDB.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/GuidoK73/DevToys.PocoDB.Core</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <PackageTags>#DataProviders, #SqlClient, #Poco, #Sql, #DbConnection, #DataReader</PackageTags>
-    <Version>1.1.3</Version>
-    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+	  <PackageTags>Sql Server;Sql Client;SqlServer;DataProviders;SqlClient;Poco;Sql;DbConnection;DataReader</PackageTags>
+	  <Version>1.1.6</Version>
     <PackageReleaseNotes>V1.1.3
 Updated Readme and moved to Net6.0
 
@@ -43,11 +46,6 @@ BulkInsert moved to other NugetPackage: DevToys.PocoDB.BulkInsert.Core</PackageR
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Readme.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+
 
 </Project>
